@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
@@ -13,14 +12,14 @@ using System.Web.Mvc;
 
 namespace DSCC.MVC._7924.Controllers
 {
-    public class HomeController : Controller
+    public class PlantController : Controller
     {
-        // GET: Client
+        // GET: Plant
         string Baseurl = "https://localhost:44336/";
-        private string urlStarter = "/api/Client";
+        private string urlStarter = "/api/Plant";
         public async Task<ActionResult> Index()
         {
-            var list = new List<Client>();
+            var list = new List<Plant>();
             string content = null;
 
             var client = new HttpClient();
@@ -28,30 +27,30 @@ namespace DSCC.MVC._7924.Controllers
             if (response.IsSuccessStatusCode)
             {
                 content = await response.Content.ReadAsStringAsync();
-                list = JsonConvert.DeserializeObject<List<Client>>(content);
+                list = JsonConvert.DeserializeObject<List<Plant>>(content);
             }
 
             return View(list);
         }
 
-        // GET: ClientsController/Details/5
+        // GET: PlantsController/Details/5
         public async Task<ActionResult> Details(int id)
         {
-            Client item = await GetClient(id);
+            Plant item = await GetPlant(id);
 
             return View(item);
         }
 
-        // GET: ClientsController/Create
+        // GET: PlantsController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: ClientsController/Create
+        // POST: PlantsController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(Client collection)
+        public async Task<ActionResult> Create(Plant collection)
         {
             try
             {
@@ -67,17 +66,17 @@ namespace DSCC.MVC._7924.Controllers
             }
         }
 
-        // GET: ClientsController/Edit/5
+        // GET: PlantsController/Edit/5
         public async Task<ActionResult> Edit(int id)
         {
-            Client item = await GetClient(id);
+            Plant item = await GetPlant(id);
             return View(item);
         }
 
-        // POST: ClientsController/Edit/5
+        // POST: PlantsController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(int id, Client collection)
+        public async Task<ActionResult> Edit(int id, Plant collection)
         {
             try
             {
@@ -93,14 +92,14 @@ namespace DSCC.MVC._7924.Controllers
             }
         }
 
-        // GET: ClientsController/Delete/5
+        // GET: PlantsController/Delete/5
         public async Task<ActionResult> Delete(int id)
         {
-            Client item = await GetClient(id);
+            Plant item = await GetPlant(id);
             return View(item);
         }
 
-        // POST: ClientsController/Delete/5
+        // POST: PlantsController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Delete(int id, IFormCollection collection)
@@ -118,17 +117,18 @@ namespace DSCC.MVC._7924.Controllers
             }
         }
 
-        public async Task<Client> GetClient(int id)
+        public async Task<Plant> GetPlant(int id)
         {
-            Client item = null;
+            Plant item = null;
             var client = new HttpClient();
             var response = await client.GetAsync(Baseurl + urlStarter + "/" + id);
             if (response.IsSuccessStatusCode)
             {
                 var content = await response.Content.ReadAsStringAsync();
-                item = JsonConvert.DeserializeObject<Client>(content);
+                item = JsonConvert.DeserializeObject<Plant>(content);
             }
             return item;
         }
+
     }
 }

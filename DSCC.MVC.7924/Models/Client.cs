@@ -10,15 +10,8 @@ namespace DSCC.MVC._7924.Models
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public Gender Gender { get; set; }
-        public DateTime DateOfBirth { get; set; }
+        public string PhoneNumber { get; set; }
         public int PlantID { get; set; }
-        public Plant Plant { get; set; }
     }
-    public enum Gender
-    {
-        Male,
-        Female,
-        Unknown
-    }
+ 
 }

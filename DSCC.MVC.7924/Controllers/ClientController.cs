@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
@@ -13,7 +12,7 @@ using System.Web.Mvc;
 
 namespace DSCC.MVC._7924.Controllers
 {
-    public class HomeController : Controller
+    public class ClientController : Controller
     {
         // GET: Client
         string Baseurl = "https://localhost:44336/";
