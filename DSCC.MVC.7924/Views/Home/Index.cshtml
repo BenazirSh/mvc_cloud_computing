@@ -4,48 +4,34 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Florange Management System</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Clients", "Index", "Client", new { area = "" }, new { @class = "navbar-brand" })
+    @Html.ActionLink("Flowers", "Index", "Plant", new { area = "" }, new { @class = "navbar-brand" })
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LastName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PlantID)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PhoneNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PlantID)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+<div class="row">
+    <div class="column">
+        <img src="https://21flowers.florist/images/SameDay/Flower-delivery-near-me.jpg" height="300" width="300">
+    </div>
+    <div class="column">
+        <img src="https://www.zieduserviss.lv/863-large_default/flower-box-autumn-kiss.jpg" height="300" width="300">
+    </div>
+    <div class="column">
+        <img src="https://images.unsplash.com/photo-1561181286-d3fee7d55364?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Ym91cXVldHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"  height="300" width="300">
+    </div>
+</div>
+<style>
+    .row {
+        display: flex;
+    }
 
-</table>
+    .column {
+        flex: 33.33%;
+        padding: 5px;
+    }
+</style>
+
+  
+

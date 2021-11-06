@@ -16,7 +16,7 @@ namespace DSCC.MVC._7924.Controllers
     {
         // GET: Plant
         string Baseurl = "https://localhost:44336/";
-        private string urlStarter = "/api/Plant";
+        private string urlStarter = "api/Plant";
         public async Task<ActionResult> Index()
         {
             var list = new List<Plant>();
@@ -102,7 +102,7 @@ namespace DSCC.MVC._7924.Controllers
         // POST: PlantsController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Delete(int id, IFormCollection collection)
+        public async Task<ActionResult> Delete(int id, Plant collection)
         {
             try
             {

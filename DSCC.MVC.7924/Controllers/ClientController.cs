@@ -15,7 +15,7 @@ namespace DSCC.MVC._7924.Controllers
     public class ClientController : Controller
     {
         // GET: Client
-        string Baseurl = "https://localhost:44336/";
+        string Baseurl = "https://localhost:44336";
         private string urlStarter = "/api/Client";
         public async Task<ActionResult> Index()
         {
@@ -95,14 +95,14 @@ namespace DSCC.MVC._7924.Controllers
         // GET: ClientsController/Delete/5
         public async Task<ActionResult> Delete(int id)
         {
-            Client item = await GetClient(id);
-            return View(item);
+             Client item = await GetClient(id);
+             return View(item); 
         }
 
         // POST: ClientsController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Delete(int id, IFormCollection collection)
+        public async Task<ActionResult> Delete(int id, Client collection)
         {
             try
             {

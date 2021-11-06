@@ -8,7 +8,7 @@ namespace DSCC.MVC._7924.Models
 {
     public class Plant
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
         public string PlantName { get; set; }
 
         [JsonIgnore]
