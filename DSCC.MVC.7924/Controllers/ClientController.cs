@@ -15,22 +15,22 @@ namespace DSCC.MVC._7924.Controllers
     public class ClientController : Controller
     {
         // GET: Client
-        string Baseurl = "https://localhost:44336";
+        string Baseurl = "http://dsccmicroservicesapi7924-dev.us-east-2.elasticbeanstalk.com";
         private string urlStarter = "/api/Client";
         public async Task<ActionResult> Index()
         {
-            var list = new List<Client>();
-            string content = null;
+            var clientList = new List<Client>();
+            string bodyResponse = null;
 
             var client = new HttpClient();
             var response = await client.GetAsync(Baseurl + urlStarter);
             if (response.IsSuccessStatusCode)
             {
-                content = await response.Content.ReadAsStringAsync();
-                list = JsonConvert.DeserializeObject<List<Client>>(content);
+                bodyResponse = await response.Content.ReadAsStringAsync();
+                clientList = JsonConvert.DeserializeObject<List<Client>>(bodyResponse);
             }
 
-            return View(list);
+            return View(clientList);
         }
 
         // GET: ClientsController/Details/5
@@ -55,8 +55,8 @@ namespace DSCC.MVC._7924.Controllers
             try
             {
                 var client = new HttpClient();
-                var json = JsonConvert.SerializeObject(collection);
-                var data = new StringContent(json, Encoding.UTF8, "application/json");
+                var jsonSerializer = JsonConvert.SerializeObject(collection);
+                var data = new StringContent(jsonSerializer, Encoding.UTF8, "application/json");
                 var response = await client.PostAsync(Baseurl + urlStarter, data);
                 return RedirectToAction(nameof(Index));
             }
@@ -81,8 +81,8 @@ namespace DSCC.MVC._7924.Controllers
             try
             {
                 var client = new HttpClient();
-                var json = JsonConvert.SerializeObject(collection);
-                var data = new StringContent(json, Encoding.UTF8, "application/json");
+                var jsonSerializer = JsonConvert.SerializeObject(collection);
+                var data = new StringContent(jsonSerializer, Encoding.UTF8, "application/json");
                 var response = await client.PutAsync(Baseurl + urlStarter + "/" + id, data);
                 return RedirectToAction(nameof(Index));
             }

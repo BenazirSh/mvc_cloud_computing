@@ -16,22 +16,22 @@ namespace DSCC.MVC._7924.Controllers
     public class HomeController : Controller
     {
         // GET: Client
-        string Baseurl = "https://localhost:44336/";
+        string Baseurl = "http://dsccmicroservicesapi7924-dev.us-east-2.elasticbeanstalk.com";
         private string urlStarter = "/api/Client";
         public async Task<ActionResult> Index()
         {
-            var list = new List<Client>();
-            string content = null;
+            var clientList = new List<Client>();
+            string body = null;
 
             var client = new HttpClient();
             var response = await client.GetAsync(Baseurl + urlStarter);
             if (response.IsSuccessStatusCode)
             {
-                content = await response.Content.ReadAsStringAsync();
-                list = JsonConvert.DeserializeObject<List<Client>>(content);
+                body = await response.Content.ReadAsStringAsync();
+                clientList = JsonConvert.DeserializeObject<List<Client>>(body);
             }
 
-            return View(list);
+            return View(clientList);
         }
 
         // GET: ClientsController/Details/5
